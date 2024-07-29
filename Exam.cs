@@ -13,12 +13,12 @@ namespace Exam_02_quiz_application
 
         public void show_exam(Question q1, MCQ mcq, T_OR_F true_or_false, int t_or_false1, int mcq1)
         {
-            Console.WriteLine("mcq questions");
-            Console.WriteLine("---------------");
-            if (t_or_false1 > 0 && mcq1 > 0)
-            {
                 int counter_question = 0;
                 int counter_answer = 0;
+            if (t_or_false1 > 0 && mcq1 > 0)
+            {
+            Console.WriteLine("mcq questions");
+            Console.WriteLine("---------------");
                 Console.WriteLine("choose the right answer by number");
                 while (counter_question < mcq1)
                 {
@@ -49,11 +49,29 @@ namespace Exam_02_quiz_application
                     counter_question++;
 
                 }
+                
             }
-            else
+            else if (t_or_false1 > 0 && mcq1 == 0)
             {
-                int counter_question = 0;
-                int counter_answer = 0;
+                Console.WriteLine("True or False questions");
+                Console.WriteLine("--------------------------");
+                counter_answer = 0;
+                Console.WriteLine("choose the right answer by number");
+                for (int x = 0; x < t_or_false1; x++)
+                {
+                    Console.WriteLine(true_or_false.Body[x]);
+                    Console.WriteLine($"{1} - {true_or_false.answer_list[counter_answer]}");
+                    counter_answer++;
+                    Console.WriteLine($"{2} -{true_or_false.answer_list[counter_answer]}");
+                    counter_answer++;
+                    q1.answer_id[counter_question] = int.Parse(Console.ReadLine());
+                    counter_question++;
+
+                }
+            }
+            else 
+            {
+             
                 while (counter_question < mcq1)
                 {
                     Console.WriteLine("choose the right answer by number");

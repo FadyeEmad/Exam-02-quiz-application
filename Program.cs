@@ -96,6 +96,8 @@ while (counter < (num_of_mcq_question + num_of_t_ot_f_question))
                 Console.WriteLine("enter number between 1 to 3");
                 q1.answer_text[counter] = int.Parse(Console.ReadLine());
             }
+            Console.WriteLine("Please Enter  question mark ");
+            q1.Mark[counter] = int.Parse(Console.ReadLine());
             counter++;
             counter_body_t_f++;
         }
@@ -130,24 +132,34 @@ while (counter < (num_of_mcq_question + num_of_t_ot_f_question))
 }
     Exam e1 = new Exam();
 e1.Number_of_Questions = num_of_mcq_question + num_of_t_ot_f_question;
-Console.WriteLine($" {s1.Subject_name} exam");
-Console.WriteLine("-------------------------");
-Stopwatch stopwatch = new Stopwatch();
-if (type == 2)
+Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+Console.WriteLine(" 1- start exam  , 2- exit ");
+int e = int.Parse(Console.ReadLine());
+if (e == 1)
 {
-    stopwatch.Start();
-    e1.show_exam(q1, mCQ1, t_OR_F, num_of_t_ot_f_question, num_of_mcq_question);
-    stopwatch.Stop();
-    e1.grade_final(q1);
-    Console.WriteLine($"time in exam -> {stopwatch.Elapsed.Seconds} S ");
-}
-else if (type == 1)
-{
-    stopwatch.Start();
-    e1.show_exam(q1, mCQ1, t_OR_F, 0 , num_of_mcq_question);
-    stopwatch.Stop();
-    e1.grade_practical(q1);
-    Console.WriteLine($"time in exam -> {stopwatch.Elapsed.TotalSeconds} S");
+    Console.WriteLine($" {s1.Subject_name} exam");
+    Console.WriteLine("-------------------------");
+    Stopwatch stopwatch = new Stopwatch();
+    if (type == 2)
+    {
+        stopwatch.Start();
+        e1.show_exam(q1, mCQ1, t_OR_F, num_of_t_ot_f_question, num_of_mcq_question);
+        stopwatch.Stop();
+        e1.grade_final(q1);
+        Console.WriteLine($"time in exam -> {stopwatch.Elapsed.Seconds} S ");
+    }
+    else if (type == 1)
+    {
+        stopwatch.Start();
+        e1.show_exam(q1, mCQ1, t_OR_F, 0, num_of_mcq_question);
+        stopwatch.Stop();
+        e1.grade_practical(q1);
+        Console.WriteLine($"time in exam -> {stopwatch.Elapsed.TotalSeconds} S");
 
+    }
+}
+else
+{
+    return;
 }
 
